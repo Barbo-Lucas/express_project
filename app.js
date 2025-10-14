@@ -1,6 +1,7 @@
 const express = require("express")
 const { engine } = require("express-handlebars")
 const path = require('path')
+const routes = require('./routes')
 
 const PORT = 3000
 const app = express()
@@ -12,9 +13,7 @@ app.set('view engine', 'handlebars')
 app.use(express.static(path.join(__dirname, 'css/')))
 app.use(express.static(path.join(__dirname, 'js/')))
 
-app.get('/', (req, res) => {
-    res.render('./home', { nome: "Lucas", isLogged: true })
-})
+app.get('/', routes)
 
 app.listen(PORT, () => {
     console.log(`Servidor rodando em http://localhost:${PORT}`)
